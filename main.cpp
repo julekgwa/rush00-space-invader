@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Player.hpp"
 
 int main() {
@@ -16,7 +15,7 @@ int main() {
     wborder(win, '|', '|', '-', '-', '+', '+', '+', '+');
     wrefresh(win);
 
-    Player *p = new Player(win, height, width, 'w');
+    Player *p = new Player(win, height, width, '*');
     do {
         p->display();
         wrefresh(win);
