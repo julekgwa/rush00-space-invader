@@ -1,6 +1,6 @@
 NAME = rush00
 FLAG = -Wall -Wextra -Werror -lncurses -o
-SRC = main.cpp
+SRC = main.cpp Player.cpp
 
 
 all:

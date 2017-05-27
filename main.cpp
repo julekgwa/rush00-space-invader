@@ -1,10 +1,11 @@
 #include <iostream>
-#include <ncurses.h>
+#include "Player.hpp"
 
 int main() {
     initscr();
     int height, width, starty, startx;
     getmaxyx(stdscr, height, width);
+    curs_set(0);
     starty = (height - (height - 2)) / 2;    /* Calculating for a center placement */
     startx = (width - (width - 2)) / 2;
     height -= 2;
@@ -14,8 +15,14 @@ int main() {
     box(win, 0, 0);
     wborder(win, '|', '|', '-', '-', '+', '+', '+', '+');
     wrefresh(win);
-    int  c = getch();
-    (void)c;
+
+    Player *p = new Player(win, height, width, 'w');
+    do {
+        p->display();
+        wrefresh(win);
+    } while (p->getMove() != 'x');
+
+    getch();
     endwin();
     return 0;
 }
