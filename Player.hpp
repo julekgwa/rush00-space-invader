@@ -2,25 +2,18 @@
 // Created by Junius LEKGWARA on 2017/05/27.
 //
 
-#ifndef RUSH00_PLAYER_HPP
-#define RUSH00_PLAYER_HPP
-#include <ncurses.h>
+#ifndef RUSH00_PLAYER_H
+#define RUSH00_PLAYER_H
 
-class Player {
+#include "GameEntity.hpp"
+
+
+class Player: public GameEntity {
 public:
     Player(WINDOW *win, int y, int x, char c);
-    void moveUp();
-    void moveDown();
-    void moveLeft();
-    void moveRight();
-    int  getMove();
-    void display();
-
-private:
-    int xLoc, yLoc, maxHeight, maxWidth;
-    char character;
-    WINDOW *currentwin;
+    void display(void);
+    int getMove();
 };
 
 
-#endif //RUSH00_PLAYER_HPP
+#endif //RUSH00_PLAYER_H

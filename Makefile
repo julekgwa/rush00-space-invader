@@ -1,6 +1,6 @@
 NAME = ft_retro
 FLAG = -Wall -Wextra -Werror -lncurses -o
-SRC = main.cpp Player.cpp
+SRC = main.cpp Player.cpp GameEntity.cpp Enemy.cpp
 
 
 all:
@@ -9,3 +9,5 @@ all:
 clean:
 	@/bin/rm -f $(NAME)
 	@echo "\033[32mCleaned up compiled files.\033[0m"
+run: all
+	./$(NAME)

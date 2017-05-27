@@ -4,53 +4,24 @@
 
 #include "Player.hpp"
 
-void Player::display() {
-    mvwaddch(this->currentwin, this->yLoc, this->xLoc, this->character);
-}
-
 Player::Player(WINDOW *win, int y, int x, char c) {
-    this->currentwin = win;
-    this->yLoc = y;
-    this->xLoc = x;
-    this->character = c;
-    getmaxyx(currentwin, this->maxHeight, this->maxWidth);
-    keypad(currentwin, true);
+    int height, width;
+    this->setCurrentWin(win);
+    this->setYLoc(y);
+    this->setXLoc(x);
+    this->setCharacter(c);
+    getmaxyx(this->getCurrentWin(), height, width);
+    this->setMaxHeight(height);
+    this->setMaxWidth(width);
+    keypad(this->getCurrentWin(), true);
 }
 
-void Player::moveUp() {
-    mvwaddch(this->currentwin, this->yLoc, this->xLoc, ' ');
-    this->yLoc--;
-    if (this->yLoc < 1) {
-        this->yLoc = 1;
-    }
-}
-
-void Player::moveDown() {
-    mvwaddch(this->currentwin, this->yLoc, this->xLoc, ' ');
-    this->yLoc++;
-    if (this->yLoc > maxHeight - 2) {
-        this->yLoc = maxHeight - 2;
-    }
-}
-
-void Player::moveLeft(){
-    mvwaddch(this->currentwin, this->yLoc, this->xLoc, ' ');
-    this->xLoc--;
-    if (this->xLoc < 1) {
-        this->xLoc = 1;
-    }
-}
-
-void Player::moveRight(){
-    mvwaddch(this->currentwin, this->yLoc, this->xLoc, ' ');
-    this->xLoc++;
-    if (this->xLoc > maxWidth - 2) {
-        this->xLoc = maxWidth - 2;
-    }
+void Player::display() {
+    mvwaddch(this->getCurrentWin(), this->getYLoc(), this->getXLoc(), this->getCharacter());
 }
 
 int Player::getMove() {
-    int key = wgetch(this->currentwin);
+    int key = wgetch(this->getCurrentWin());
     switch (key) {
         case KEY_UP:
             this->moveUp();
