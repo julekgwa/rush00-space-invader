@@ -1,4 +1,4 @@
-NAME = rush00
+NAME = ft_retro
 FLAG = -Wall -Wextra -Werror -lncurses -o
 SRC = main.cpp Player.cpp
 
