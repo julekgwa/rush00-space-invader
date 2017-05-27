@@ -6,12 +6,13 @@
 #define RUSH00_PLAYER_H
 
 #include "GameEntity.hpp"
+#include "Enemy.hpp"
 
 
 class Player: public GameEntity {
 public:
     Player(WINDOW *win, int y, int x, char c);
-    void display(void);
+    void display(Enemy *enemy);
     int getMove();
 };
 

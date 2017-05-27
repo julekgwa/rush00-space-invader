@@ -1,6 +1,5 @@
 #include "GameEntity.hpp"
 #include "Player.hpp"
-#include "Enemy.hpp"
 
 int main() {
     initscr();
@@ -17,11 +16,11 @@ int main() {
     wborder(win, '|', '|', '-', '-', '+', '+', '+', '+');
     wrefresh(win);
 
+    halfdelay(4);
     Enemy *enemy = new Enemy(win, height / 2, width - 20, 'R');
     Player *p = new Player(win, height / 2, 5, '*');
     do {
-        p->display();
-        enemy->display();
+        p->display(enemy);
         wrefresh(win);
     } while (p->getMove() != 'x');
 

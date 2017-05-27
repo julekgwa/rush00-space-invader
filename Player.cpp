@@ -16,7 +16,9 @@ Player::Player(WINDOW *win, int y, int x, char c) {
     keypad(this->getCurrentWin(), true);
 }
 
-void Player::display() {
+void Player::display(Enemy *enemy) {
+//    if (enemy->alive)
+        enemy->display();
     mvwaddch(this->getCurrentWin(), this->getYLoc(), this->getXLoc(), this->getCharacter());
 }
 

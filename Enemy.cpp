@@ -7,7 +7,6 @@
 void Enemy::display() {
     MOVE: this->moveLeft();
     mvwaddch(this->getCurrentWin(), this->getYLoc(), this->getXLoc(), this->getCharacter());
-    sleep(1000);
     if (this->alive)
         goto MOVE;
 }
