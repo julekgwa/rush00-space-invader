@@ -5,6 +5,8 @@
 #ifndef RUSH00_PLAYER_HPP
 #define RUSH00_PLAYER_HPP
 #include <ncurses.h>
+#include <stdlib.h>     /* srand, rand */
+#include <time.h>       /* time */
 
 class GameEntity {
 public:
@@ -26,6 +28,7 @@ public:
     void setCurrentWin(WINDOW *win);
     WINDOW *getCurrentWin(void);
     bool alive;
+    int score;
     int lives;
 
 private:

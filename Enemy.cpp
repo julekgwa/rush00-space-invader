@@ -8,7 +8,7 @@ void Enemy::display(Enemy bullets[], int totalShots) {
     if (this->type == 'E')
         this->moveLeft();
     else if (this->type == 'B')
-        this->moveRight(3);
+        this->moveRight(10);
     int i = 0;
     while (i < totalShots) {
         if (bullets[i].shot) {
@@ -44,6 +44,7 @@ Enemy::Enemy() {
     this->type = 'B';
     this->shot = false;
     this->total++;
+    this->totalAlive++;
 }
 
 void Enemy::show(WINDOW *win, int y, int x, char c) {
@@ -63,4 +64,5 @@ void Enemy::show(WINDOW *win, int y, int x, char c) {
 
 bool alive = true;
 int Enemy::total = 0;
+int Enemy::totalAlive = 0;
 

@@ -10,6 +10,7 @@ Player::Player(WINDOW *win, int y, int x, char c) {
     this->setCurrentWin(win);
     this->setYLoc(y);
     this->shots = -1;
+    this->score = 0;
     this->setXLoc(x);
     this->setCharacter(c);
     getmaxyx(this->getCurrentWin(), height, width);
@@ -29,10 +30,11 @@ void Player::display(Enemy enemies[], Enemy enemy1[]) {
         enemy1[this->shots].show(this->getCurrentWin(), this->getYLoc(), this->getXLoc() + 1, '-');
     }
     int i = 0;
-    while (i < 3) {
+    while (i < 37) {
         if (enemies[i].getYLoc() == this->getYLoc() && enemies[i].getXLoc() == this->getXLoc() && enemies[i].alive) {
             enemies[i].lives = 0;
             enemies[i].alive = false;
+            Enemy::totalAlive--;
             this->lives -= 1;
             mvwaddch(this->getCurrentWin(), this->getYLoc(), this->getXLoc(), ' ');
             this->setYLoc(this->getMaxHeight() / 2);
@@ -43,6 +45,9 @@ void Player::display(Enemy enemies[], Enemy enemy1[]) {
         }
         i++;
     }
+    if (Enemy::totalAlive <= 0) {
+        this->lives = 0;
+    }
     i = 0;
     while (i < this->shots) {
         if (enemy1[i].shot) {
@@ -50,6 +55,7 @@ void Player::display(Enemy enemies[], Enemy enemy1[]) {
         }
         i++;
     }
+    i = 0;
     mvwaddch(this->getCurrentWin(), this->getYLoc(), this->getXLoc(), this->getCharacter());
 }
 

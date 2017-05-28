@@ -17,6 +17,7 @@ public:
     bool shot;
     char type;
     static int total;
+    static int totalAlive;
 };
 
 
