@@ -23,9 +23,10 @@ Player::Player() {
 }
 
 void Player::display(Enemy &enemy, Enemy enemy1[]) {
-    if (this->getMove() == ' ') {
+    if (this->getMove() == ' ' && (this->shots + 1) < Enemy::total) {
         this->shots += 1;
-        enemy1[this->shots].show(this->getCurrentWin(), this->getYLoc(), 10, '-');
+        enemy1[this->shots].shot = true;
+        enemy1[this->shots].show(this->getCurrentWin(), this->getYLoc(), this->getXLoc() + 1, '-');
     }
     if (enemy.getYLoc() == this->getYLoc() && enemy.getXLoc() == this->getXLoc() && enemy.alive) {
         enemy.lives = 0;
@@ -36,12 +37,12 @@ void Player::display(Enemy &enemy, Enemy enemy1[]) {
         this->setXLoc(5);
     }
     if (enemy.lives) {
-        enemy.display();
+        enemy.display(enemy1, this->shots);
     }
     int i = 0;
     while (i < this->shots) {
         if (enemy1[i].shot) {
-            enemy1[i].display();
+            enemy1[i].display(enemy1, this->shots);
         }
         i++;
     }

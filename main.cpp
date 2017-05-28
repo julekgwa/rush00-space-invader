@@ -20,10 +20,10 @@ int main() {
 
     halfdelay(4);
     Enemy enemy(win, height / 2, width - 20, 'R');
-    Enemy bullet[20];
+    Enemy bullets[30];
     Player *p = new Player(win, height / 2, 5, '>');
     do {
-        p->display(enemy, bullet);
+        p->display(enemy, bullets);
         wrefresh(win);
     } while (p->getMove() != 'x' && p->lives);
 

@@ -13,9 +13,10 @@ public:
     Enemy(WINDOW *win, int y, int x, char c);
     Enemy();
     void show(WINDOW *win, int y, int x, char c);
-    void display(void);
+    void display(Enemy bullets[], int totalShots);
     bool shot;
     char type;
+    static int total;
 };
 
 
