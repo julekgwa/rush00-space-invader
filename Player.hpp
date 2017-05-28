@@ -14,7 +14,7 @@ class Player: public GameEntity {
 public:
     Player(WINDOW *win, int y, int x, char c);
     Player();
-    void display(Enemy &enemy, Enemy enemy1[]);
+    void display(Enemy enemies[], Enemy enemy1[]);
     int getMove();
     int shots;
 };

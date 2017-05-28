@@ -22,24 +22,28 @@ Player::Player() {
 
 }
 
-void Player::display(Enemy &enemy, Enemy enemy1[]) {
+void Player::display(Enemy enemies[], Enemy enemy1[]) {
     if (this->getMove() == ' ' && (this->shots + 1) < Enemy::total) {
         this->shots += 1;
         enemy1[this->shots].shot = true;
         enemy1[this->shots].show(this->getCurrentWin(), this->getYLoc(), this->getXLoc() + 1, '-');
     }
-    if (enemy.getYLoc() == this->getYLoc() && enemy.getXLoc() == this->getXLoc() && enemy.alive) {
-        enemy.lives = 0;
-        enemy.alive = false;
-        this->lives -= 1;
-        mvwaddch(this->getCurrentWin(), this->getYLoc(), this->getXLoc(), ' ');
-        this->setYLoc(this->getMaxHeight() / 2);
-        this->setXLoc(5);
-    }
-    if (enemy.lives) {
-        enemy.display(enemy1, this->shots);
-    }
     int i = 0;
+    while (i < 3) {
+        if (enemies[i].getYLoc() == this->getYLoc() && enemies[i].getXLoc() == this->getXLoc() && enemies[i].alive) {
+            enemies[i].lives = 0;
+            enemies[i].alive = false;
+            this->lives -= 1;
+            mvwaddch(this->getCurrentWin(), this->getYLoc(), this->getXLoc(), ' ');
+            this->setYLoc(this->getMaxHeight() / 2);
+            this->setXLoc(5);
+        }
+        if (enemies[i].lives) {
+            enemies[i].display(enemy1, this->shots);
+        }
+        i++;
+    }
+    i = 0;
     while (i < this->shots) {
         if (enemy1[i].shot) {
             enemy1[i].display(enemy1, this->shots);

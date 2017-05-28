@@ -1,7 +1,5 @@
 #include "GameEntity.hpp"
 #include "Player.hpp"
-#include "Bullet.hpp"
-#include "Enemy.hpp"
 
 int main() {
     initscr();
@@ -19,11 +17,13 @@ int main() {
     wrefresh(win);
 
     halfdelay(4);
-    Enemy enemy(win, height / 2, width - 20, 'R');
+    Enemy enemies[3] ={Enemy(win, height / 2, width - 20, 'R'),
+                     Enemy(win, height / 3, width + 20, 'R'),
+                     Enemy(win, height / 4, width + 40, 'R')};
     Enemy bullets[30];
     Player *p = new Player(win, height / 2, 5, '>');
     do {
-        p->display(enemy, bullets);
+        p->display(enemies, bullets);
         wrefresh(win);
     } while (p->getMove() != 'x' && p->lives);
 

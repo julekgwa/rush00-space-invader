@@ -12,7 +12,8 @@ void Enemy::display(Enemy bullets[], int totalShots) {
     int i = 0;
     while (i < totalShots) {
         if (bullets[i].shot) {
-            if (bullets[i].getYLoc() == this->getYLoc() && bullets[i].getXLoc() == this->getXLoc() && this->alive && this->type == 'E') {
+            if (bullets[i].getYLoc() == this->getYLoc() && bullets[i].getXLoc() == this->getXLoc() && this->alive &&
+                this->type == 'E') {
                 this->lives = 0;
                 this->alive = false;
                 mvwaddch(this->getCurrentWin(), this->getYLoc(), this->getXLoc(), ' ');
@@ -44,6 +45,7 @@ Enemy::Enemy() {
     this->shot = false;
     this->total++;
 }
+
 void Enemy::show(WINDOW *win, int y, int x, char c) {
     int height, width;
     this->lives = 1;
@@ -58,6 +60,7 @@ void Enemy::show(WINDOW *win, int y, int x, char c) {
     this->setMaxHeight(height);
     this->setMaxWidth(width);
 }
+
 bool alive = true;
 int Enemy::total = 0;
 
