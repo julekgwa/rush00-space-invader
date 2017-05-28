@@ -12,8 +12,7 @@ public:
     void moveDown(void);
     void moveLeft(void);
     void moveRight(void);
-    void setLives(int lives);
-    int getLives(void);
+    void moveRight(int speed);
     void setMaxHeight(int h);
     void setMaxWidth(int w);
     int getMaxHeight(void);
@@ -26,11 +25,12 @@ public:
     int getXLoc(void);
     void setCurrentWin(WINDOW *win);
     WINDOW *getCurrentWin(void);
+    bool alive;
+    int lives;
 
 private:
     int xLoc, yLoc, maxHeight, maxWidth;
     char character;
-    int lives;
     WINDOW *currentwin;
 };
 

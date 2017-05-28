@@ -36,12 +36,12 @@ void GameEntity::moveRight() {
     }
 }
 
-void GameEntity::setLives(int lives) {
-    this->lives = lives;
-}
-
-int GameEntity::getLives() {
-    return this->lives;
+void GameEntity::moveRight(int speed) {
+    mvwaddch(this->currentwin, this->yLoc, this->xLoc, ' ');
+    this->xLoc += speed;
+    if (this->xLoc > maxWidth - 2) {
+        this->xLoc = maxWidth - 2;
+    }
 }
 
 void GameEntity::setMaxHeight(int h) {

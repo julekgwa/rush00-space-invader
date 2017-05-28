@@ -11,8 +11,11 @@
 class Enemy: public GameEntity {
 public:
     Enemy(WINDOW *win, int y, int x, char c);
+    Enemy();
+    void show(WINDOW *win, int y, int x, char c);
     void display(void);
-    bool alive;
+    bool shot;
+    char type;
 };
 
 

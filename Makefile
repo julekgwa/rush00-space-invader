@@ -1,6 +1,6 @@
 NAME = ft_retro
 FLAG = -Wall -Wextra -Werror -lncurses -o
-SRC = main.cpp Player.cpp GameEntity.cpp Enemy.cpp
+SRC = main.cpp Player.cpp GameEntity.cpp Enemy.cpp Bullet.cpp
 
 
 all:
